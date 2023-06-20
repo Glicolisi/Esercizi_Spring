@@ -29,5 +29,14 @@ public class MealControllerbyName {
        return ResponseEntity.ok(meal);
 
     }
+    @GetMapping(value="meals/rating/{rating}")
+    public ResponseEntity<Meal> mealbyrating(@PathVariable("rating")String rating){
+
+        Optional<Meal> meal1 = mealList.stream().filter(m->m.getrating().contains(rating)).findFirst();
+        Meal meal = meal1.get();
+
+        return ResponseEntity.ok(meal);
+
+    }
 
 }
