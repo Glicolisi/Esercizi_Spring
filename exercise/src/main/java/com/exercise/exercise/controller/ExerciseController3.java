@@ -1,4 +1,4 @@
-package com.exercise.exercise.service;
+package com.exercise.exercise.controller;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

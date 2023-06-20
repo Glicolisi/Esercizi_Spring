@@ -1,4 +1,4 @@
-package com.exercise.exercise.service;
+package com.exercise.exercise.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
