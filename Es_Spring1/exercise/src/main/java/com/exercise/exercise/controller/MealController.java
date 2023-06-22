@@ -23,18 +23,40 @@ public class MealController {
 
     public ResponseEntity<List<Meal>> getMeallist() {
 
-        return ResponseEntity.ok(mealList1);
+        return ResponseEntity.ok(mealList);
     }
 
     @PutMapping(value="/meal")
 
     public ResponseEntity<String>putMeal(@RequestBody Meal meal){
-
+        this.mealList.addAll(mealList1);
         this.mealList.add(meal);
         return ResponseEntity.ok("Aggiunto Meal");
 
     }
+    //Ripartire da qui provando Spring
+    @PostMapping(value = "/meal/{Mealname}")
 
+    public ResponseEntity<String>postMeal(@RequestParam String Mealname, @RequestBody Meal meal ){
+
+        for(Meal meal1 : mealList){
+
+            if(meal1.getName().contains(Mealname)){
+
+                meal1.setName(meal.getName());
+                meal1.setrating(meal.getrating());
+                meal1.setPrice(meal.getPrice());
+
+            } else{
+
+                return ResponseEntity.badRequest().body("Meal inesistente");
+
+            }
+
+        }
+
+        return ResponseEntity.ok("Aggiornato Meal");
+    }
 
 }
 
