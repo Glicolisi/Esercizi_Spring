@@ -67,5 +67,15 @@ public class MealController {
 
     }
 
+    @DeleteMapping(value = "/meals/deleteAll/{Price}")
+
+    public ResponseEntity<String> deleteAllforPrice(@PathVariable Double Price) {
+
+        this.mealList.removeIf(meal->meal.getPrice()<=Price);
+
+        return ResponseEntity.ok("Cancellato secondo il Prezzo");
+
+    }
+
 
 }
