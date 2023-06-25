@@ -77,5 +77,16 @@ public class MealController {
 
     }
 
+    @PutMapping(value = "/meals/{MealName}/price")
+
+    public ResponseEntity<String> updateMeal(@PathVariable String MealName,@RequestBody Meal meal){
+
+        Meal meal1 = mealList.stream().filter(m->m.getName().contains(MealName)).findFirst().get();
+        meal1.setPrice(meal.getPrice());
+
+        return  ResponseEntity.ok("Aggiornato prezzo");
+
+    }
+
 
 }
