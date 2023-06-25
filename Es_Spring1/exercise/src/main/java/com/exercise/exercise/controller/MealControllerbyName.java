@@ -23,8 +23,8 @@ public class MealControllerbyName {
 
     public ResponseEntity<Meal> mealbyname(@PathVariable("name")String name){
 
-       Optional<Meal> meal1 = mealList.stream().filter(m->m.getName().equals(name)).findFirst();
-       Meal meal = meal1.get();
+       Meal meal = mealList.stream().filter(m->m.getName().equals(name)).findFirst().get();
+
 
        return ResponseEntity.ok(meal);
 
@@ -32,8 +32,8 @@ public class MealControllerbyName {
     @GetMapping(value="meals/rating/{rating}")
     public ResponseEntity<Meal> mealbyrating(@PathVariable("rating")String rating){
 
-        Optional<Meal> meal1 = mealList.stream().filter(m->m.getrating().contains(rating)).findFirst();
-        Meal meal = meal1.get();
+        Meal meal = mealList.stream().filter(m->m.getrating().contains(rating)).findFirst().get();
+
 
         return ResponseEntity.ok(meal);
 
